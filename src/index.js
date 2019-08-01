@@ -8,8 +8,8 @@ const cors = require ('cors')
 const User = require('./models/user')
 const Task = require('./models/task')
 
-// mongoose.connect('mongodb://127.0.0.1:27017/jc-mongoose', {
-    mongoose.connect('mongodb+srv://hamdan:pekalongan@jc9cluster-fcj7z.mongodb.net/JC9Database?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://127.0.0.1:27017/jc-mongoose', {
+    // mongoose.connect('mongodb+srv://hamdan:pekalongan@jc9cluster-fcj7z.mongodb.net/JC9Database?retryWrites=true&w=majority', {
     // Parser string URL
     useNewUrlParser: true,
 
@@ -168,6 +168,56 @@ app.get('/users/:id/avatar', async (req, res) => {
 
     res.set('Content-Type', 'image/png')
     res.send(user.avatar) // default: ContentType : application/json
+})
+
+
+
+// UPDATE PROFILE BY ID
+// Name, email, age, password
+app.patch('/users/:id', upload.single('avatar') ,(req, res) => {
+    let arrayBody = Object.keys(req.body)
+    // req.body {name, email, age, password}
+    // arrayBody [name, email, age, password]
+    arrayBody.forEach(key => {
+        if(!req.body[key]){
+            delete req.body[key]
+        }
+    })
+    // req.body {name, email, age}
+    // arrayBody [name, email, age]
+    arrayBody = Object.keys(req.body)
+
+    const data_id = req.params.id
+    
+    User.findById(data_id)
+        .then(user => {
+            // user : {_id, name, password, email, age}
+
+            if(!user){
+                return res.send("User tidak di temukan")
+            }
+
+            // update user
+            // arrayBody [name, email, age]
+            arrayBody.forEach(key => {
+                user[key] = req.body[key]
+            })
+
+            sharp(req.file.buffer).resize({width: 250}).png().toBuffer()
+            .then(buffer => {
+
+                user.avatar = buffer
+
+                user.save()
+                    .then(() => {
+                        res.send('Update Profile Berhasil')
+                    })
+
+            })
+            
+
+            
+        })
 })
 
 
