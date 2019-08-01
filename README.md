@@ -2,7 +2,7 @@
 
 ## LOCALHOST
 
-Steps:
+*Steps:
 
 1. Run MongoDB sesuai folde di C:\Users\User  => mongodb\bin\mongod.exe --dbpath=mongodb-data\
 
@@ -12,17 +12,17 @@ Steps:
 
 npm install bootstrap axios redux react-redux redux-thunk react-router-dom reactstrap universal-cookie
 
-NOTE:
+#### NOTE:
 
 Jika [nodemon] app crashed, DELETE semua node_modules, lalu instal ulang semua komponennya.
 
-Yaitu:
+_yaitu:
 
-npm install bootstrap axios redux react-redux redux-thunk react-router-dom reactstrap universal-cookie
+*npm install bootstrap axios redux react-redux redux-thunk react-router-dom reactstrap universal-cookie
 
 Lalu Run kembali:
 
-npx nodemon src/index.js
+*npx nodemon src/index.js
 
 
 ## SERVER SIDE HEROKU
