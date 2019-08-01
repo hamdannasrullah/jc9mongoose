@@ -4,7 +4,7 @@
 
 *Steps:
 
-1. Run MongoDB sesuai folde di C:\Users\User  => mongodb\bin\mongod.exe --dbpath=mongodb-data\
+1. Run MongoDB sesuai folder di C:\Users\User  => mongodb\bin\mongod.exe --dbpath=mongodb-data\
 
 2. Run BackEnd di E:\...\Project\jc9mongoose => nodemon src\index.js
 
