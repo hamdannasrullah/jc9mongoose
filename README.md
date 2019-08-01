@@ -16,13 +16,13 @@ npm install bootstrap axios redux react-redux redux-thunk react-router-dom react
 
 Jika [nodemon] app crashed, DELETE semua node_modules, lalu instal ulang semua komponennya.
 
-_yaitu:
+yaitu:
 
-*npm install bootstrap axios redux react-redux redux-thunk react-router-dom reactstrap universal-cookie
+npm install bootstrap axios redux react-redux redux-thunk react-router-dom reactstrap universal-cookie
 
 Lalu Run kembali:
 
-*npx nodemon src/index.js
+npx nodemon src/index.js
 
 
 ## SERVER SIDE HEROKU
