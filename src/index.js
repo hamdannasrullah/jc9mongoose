@@ -105,7 +105,7 @@ const upload = multer({
 
 // CREATE AVATAR
 
-app.post('/users/:id/avatar', upload.single('avatar'), (req, res) => {
+app.post('/users/:id/avatar', upload.single('avatars'), (req, res) => {
     const data_id = req.params.id
 
     // Resize ukuran dan ubah extensi menjadi png
@@ -179,7 +179,7 @@ app.get('/users/:id/avatar', async (req, res) => {
 
 // UPDATE PROFILE BY ID
 // Name, email, age, password
-app.patch('/users/:id', upload.single('avatar') ,(req, res) => {
+app.patch('/users/:id', upload.single('avatars') ,(req, res) => {
     let arrayBody = Object.keys(req.body)
     // req.body {name, email, age, password}
     // arrayBody [name, email, age, password]
