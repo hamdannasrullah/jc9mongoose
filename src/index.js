@@ -109,7 +109,7 @@ app.post('/users/:id/avatar', upload.single('avatars'), (req, res) => {
     const data_id = req.params.id
 
     // Resize ukuran dan ubah extensi menjadi png
-    sharp(req.file.buffer).resize({width:350}).png().toBuffer()
+    sharp(req.file.buffer).resize({width:250}).png().toBuffer()
     .then(buffer => {
 
         // hasil resize ada di buffer
@@ -228,29 +228,29 @@ app.patch('/users/:id', upload.single('avatars') ,(req, res) => {
 
 // UPDATE NAME BY ID
 
-app.patch ('/users/:id', (req, res) => {
-    const data_id = req.params.data_id
-    const data_newname = req.body.name
+// app.patch ('/users/:id', (req, res) => {
+//     const data_id = req.params.data_id
+//     const data_newname = req.body.name
 
-    User.findById(data_id)
-    .then(user => {
-        // user: {_id, name, password, email, age}
+//     User.findById(data_id)
+//     .then(user => {
+//         // user: {_id, name, password, email, age}
 
-        if(!user){
-            return res.send("User tidak ditemukan")
-        }
+//         if(!user){
+//             return res.send("User tidak ditemukan")
+//         }
 
-        //ubah nama dg nama yg baru
-        user.name = data_newname
+//         //ubah nama dg nama yg baru
+//         user.name = data_newname
 
-        // simpan perubahan dara
-        user.save()
-        .then(() => {
+//         // simpan perubahan dara
+//         user.save()
+//         .then(() => {
 
-        res.send('Update telah berhasil')
-        })
-    })
-})
+//         res.send('Update telah berhasil')
+//         })
+//     })
+// })
 
 
 // DELETE USER BY ID
