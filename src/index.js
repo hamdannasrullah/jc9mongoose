@@ -20,7 +20,12 @@ mongoose.connect('mongodb://127.0.0.1:27017/jc-mongoose', {
 
 
 const app = express ()
-const port = 2020
+// LOCAL HOST:
+// const port = 2020
+
+
+// HEROKU:
+const port = process.env.PORT || 2020
 
 app.use(cors())
 app.use(express.json())
